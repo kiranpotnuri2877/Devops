@@ -1,7 +1,5 @@
-FROM nginx:alpine
-
-RUN rm -rf /usr/share/nginx/html/*
-
-COPY index.html /usr/share/nginx/html/
-
-EXPOSE 80
+FROM eclipse-temurin:17-jre-alpine
+WORKDIR /app
+COPY target/*.jar app.jar
+EXPOSE 8081
+ENTRYPOINT ["java", "-jar", "app.jar"]
